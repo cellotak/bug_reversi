@@ -25,7 +25,7 @@ DIRECTIONS = [
 
 def output(board)
   puts "  #{ROW.join(' ')}"
-  board.each.with_index do |row, i|
+  board.each.with_index do |row, i| ##気になるけど動作はしているので放置
     print COL[i].to_s
     row.each do |cell|
       case cell
@@ -53,7 +53,7 @@ def put_stone!(board, cellstr, stone_color, execute = true) # rubocop:disable St
 
   # コピーした盤面にて石の配置を試みて、成功すれば反映する
   copied_board = Marshal.load(Marshal.dump(board))
-  copied_board[pos.row][pos.col] = stone_color
+  copied_board[pos.col][pos.row] = stone_color
 
   turn_succeed = false
   DIRECTIONS.each do |direction|
